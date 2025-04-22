@@ -47,10 +47,12 @@ export const scrapeEULegislators = async () => {
     }
   }
 
-  return await parseLegislatorsData()
+  try {
+    return await parseLegislatorsData()
+  } catch (error) {
+    console.error('Error when scraping EU legislators : ', error)
+  }
 }
-
-scrapeEULegislators()
 
 // Helper function to format LegislatorsName to working URL
 const formatLegislatorsName = (name) => {
